@@ -15,10 +15,9 @@ Crie uma aplicação crie automaticamente uma turma com 5 alunos, e permita ao usu
 e verificar a média dos alunos.
  */
 public class Principal {
-
 	static Aluno vAluno[] = new Aluno[100];
 	static Turma vTurma[] = new Turma[10];
-	static Avaliacao vAvaliacao[] = new Avaliacao[100];
+	static Avaliacao vAvaliacao[] = new Avaliacao[20];
 
 	public static void main(String[] args) {	
 
@@ -95,6 +94,7 @@ public class Principal {
 		for (int b = 0; b < vAluno.length; b++) {
 			if (vAluno[b] == null) {
 				vAluno[b] = new Aluno();
+				System.out.println("Aluno cadastrado: \n"+vAluno[b]);
 				return;
 			}
 		}
