@@ -13,9 +13,11 @@ public class Principal {
 	static ArrayList<Aluno> listaAlunos = new ArrayList<>();
 	static ArrayList<Turma> listaTurma = new ArrayList<>();
 	static ArrayList<Avaliacao> avaliacoes = new ArrayList<>();	
+	static ArrayList<Chamada> chamadas = new ArrayList<>();
 
 	public static void main(String[] args) {
 		inicializaAlunos();
+		inicializaTurmas();
 		while (true) {
 			switch (Interfaces.readString(menu()).charAt(0)) {
 			case '1':
@@ -51,6 +53,11 @@ public class Principal {
 		listaAlunos.add(new Aluno("Daniele Silva"));
 		listaAlunos.add(new Aluno("Wilson Martins"));
 	}
+	
+	// Insere valores no arraylist das turmas.
+	private static void inicializaTurmas() {
+		listaTurma.add(new Turma("Algoritmos II"));		
+	}
 
 	private static void adicionarAvaliacao() {		
 		double n1 = 0, n2 = 0, n3 = 0;
@@ -67,9 +74,21 @@ public class Principal {
 	}
 
 	private static void realizarChamada() {
-		System.out.println("Em desenvolvimento");
 		String data = Interfaces.getDateTime();
-		System.out.println(data);
+		int cont = 0;
+		boolean verificaPresenca;
+		listarTurmas();
+		int cTurma = Interfaces.readInteger("Digite o código da turma: ");
+		System.out.print("Chamada da turma de "+listaTurma.get(cTurma).getDisciplina()+" do dia de "+data+":\n");
+		for(Aluno s: listaAlunos){			
+			System.out.print(listaAlunos.get(cont).getNomeAluno());
+			char pres = Interfaces.readString(". Presente? [S/N]").charAt(0);
+			if (pres == 'S') {
+				verificaPresenca = true;
+				chamadas.add(new Chamada(data, cont, cTurma, verificaPresenca));
+			}			
+			cont++;
+		}
 	}
 
 	private static void listarAlunos() {

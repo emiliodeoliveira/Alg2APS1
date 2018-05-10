@@ -1,8 +1,6 @@
 import java.util.Date;
-import java.text.DateFormat;
 import java.text.Format;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Scanner;
 
@@ -33,5 +31,4 @@ public class Interfaces {
 		String s = formatter.format(today);
 		return s;
 	}
-
 }

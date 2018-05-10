@@ -1,9 +1,15 @@
 
 public class Turma {
+	private int codTurma = 0;
 	private String disciplina;
 
 	public Turma() {
+		this.codTurma = codTurma + 1;
 		disciplina = Interfaces.readString("Digite o nome da disciplina: ");		
+	}
+
+	public Turma(String d) {
+		this.disciplina = d;
 	}
 
 	public String getDisciplina() {
@@ -16,7 +22,7 @@ public class Turma {
 
 	@Override
 	public String toString() {
-		return "Turma [disciplina=" + disciplina + "]";
-	}	
+		return "Código: " + codTurma + ", Disciplina: " + disciplina +"";
+	}
 	
 }
