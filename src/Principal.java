@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Scanner;
 
 /**
@@ -5,99 +7,92 @@ import java.util.Scanner;
  * @author Emilio de Oliveira
  *
  */
-
-/* Tarefas:
-Crie uma classe Aluno, que contém os dados Nome e Matrícula.
-Crie uma classe Avaliação, que contém uma nota (utilize notas numéricas, com ponto decimal) e uma data.
-Crie uma classe Aula, que contém uma data, e um campo para descrever que atividades foram executadas nesse dia.
-Crie uma classe Turma, que contém uma disciplina e um conjunto de Alunos.
-Crie uma aplicação crie automaticamente uma turma com 5 alunos, e permita ao usuário realizar chamadas, adicionar avaliações (até 3), 
-e verificar a média dos alunos.
- */
 public class Principal {
-	static Aluno vAluno[] = new Aluno[100];
-	static Turma vTurma[] = new Turma[10];
-	static Avaliacao vAvaliacao[] = new Avaliacao[20];
+	Aluno aluno = new Aluno();
+	Turma turma = new Turma();
+	static ArrayList<Aluno> listaAlunos = new ArrayList<>();
+	static ArrayList<Turma> listaTurma = new ArrayList<>();
+	static ArrayList<Avaliacao> avaliacoes = new ArrayList<>();	
 
-	public static void main(String[] args) {	
-
+	public static void main(String[] args) {
+		inicializaAlunos();
 		while (true) {
 			switch (Interfaces.readString(menu()).charAt(0)) {
 			case '1':
-				cadastraAluno();
+				listaAlunos.add(new Aluno());
 				break;
 			case '2':
-				cadastrarTurmas();
+				listaTurma.add(new Turma());
 				break;
 			case '3':
-				realizarChamada();
+				listarAlunos();
 				break;
 			case '4':
-				adicionarAvaliacao();
+				listarTurmas();
 				break;
 			case '5':
+				realizarChamada();
+				break;
+			case '6':
+				adicionarAvaliacao();
+				break;
+			case '7':
 				System.exit(0);
 				break;
 			}
 		}		
 	}
 
-	private static void adicionarAvaliacao() {
-		int cont = 0;
-		for (int b = 0; b < vAvaliacao.length; b++) {
-			if (vAvaliacao[b] == null && cont < 3) {
-				vAvaliacao[b] = new Avaliacao();
-				cont++;
-				return;
-			} else {
-				System.out.println("Ocorreu um erro!");
-			}
-		}
+	// Insere valores no arraylist dos alunos, conforme solicitado no enunciado.
+	private static void inicializaAlunos() {
+		listaAlunos.add(new Aluno("Ana Martins"));
+		listaAlunos.add(new Aluno("Bruno Castro"));
+		listaAlunos.add(new Aluno("Carlos Albuquerque"));
+		listaAlunos.add(new Aluno("Daniele Silva"));
+		listaAlunos.add(new Aluno("Wilson Martins"));
+	}
 
+	private static void adicionarAvaliacao() {		
+		double n1 = 0, n2 = 0, n3 = 0;
+		int cod = Interfaces.readInteger("Digite a matricula do aluno: ");
+		int codVerificado = verificaCodAluno(cod);
+		if (codVerificado != -1) {
+			n1 = Interfaces.readDouble("Digite a nota da avaliação 1: ");
+			n2 = Interfaces.readDouble("Digite a nota da avaliação 2: ");
+			n3 = Interfaces.readDouble("Digite a nota da avaliação 3: ");
+		} else {
+			System.out.println("Erro");
+		}
+		avaliacoes.add(new Avaliacao(cod, n1, n2, n3));
 	}
 
 	private static void realizarChamada() {
-		// TODO Auto-generated method stub
-
-	}
-
-	private static void cadastrarTurmas() {
-		// TODO Auto-generated method stub
-
+		System.out.println("Em desenvolvimento");
+		String data = Interfaces.getDateTime();
+		System.out.println(data);
 	}
 
 	private static void listarAlunos() {
-		if (vAluno[0] != null) {			
-			for (int a = 0; a < vAluno.length; a++) {
-				if (vAluno[a] != null) {
-					System.out.println(a+". "+vAluno[a]);
-				}
-			}			
-		}	else {
-			System.out.println("A lista de alunos está vazia!");
+		for(Aluno s: listaAlunos){
+			System.out.println(s);
 		}
 	}
 
 	private static void listarTurmas() {
-		if (vTurma[0] != null) {			
-			for (int a = 0; a < vTurma.length; a++) {
-				if (vTurma[a] != null) {
-					System.out.println(a+". "+vTurma[a]);
-				}
-			}			
-		}	else {
-			System.out.println("A lista de turma está vazio!");
+		for(Turma s: listaTurma){
+			System.out.println(s);
 		}
 	}
 
-	private static void cadastraAluno() {
-		for (int b = 0; b < vAluno.length; b++) {
-			if (vAluno[b] == null) {
-				vAluno[b] = new Aluno();
-				System.out.println("Aluno cadastrado: \n"+vAluno[b]);
-				return;
-			}
+	private static int verificaCodAluno(int a){
+		int c = 0;
+		for(int i=0; i < listaAlunos.size(); i++) {
+			if(listaAlunos.get(i).getNumMatricula() == a)
+				c = i;
+			else 
+				c = -1;
 		}
+		return c;
 	}
 
 	private static String menu() {
@@ -105,9 +100,11 @@ public class Principal {
 		menu += "\nSistema escolar:";
 		menu += "\n  1 - Cadastrar aluno.";
 		menu += "\n  2 - Cadastrar turma.";
-		menu += "\n  3 - Realizar chamada.";
-		menu += "\n  4 - Adicionar avaliação.";
-		menu += "\n  5 - Sair.";
+		menu += "\n  3 - Listar alunos.";
+		menu += "\n  4 - Listar turmas.";
+		menu += "\n  5 - Realizar chamada.";
+		menu += "\n  6 - Adicionar avaliação.";
+		menu += "\n  7 - Sair.";
 		menu += "\nEscolha: ";
 		return menu;
 	}

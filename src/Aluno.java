@@ -1,3 +1,4 @@
+import java.util.Random;
 
 public class Aluno {
 	private String nomeAluno;
@@ -5,8 +6,14 @@ public class Aluno {
 	Avaliacao avaliacao;	
 
 	public Aluno() {
-		nomeAluno = Interfaces.readString("Digite o nome do aluno: ");
-		numMatricula = Interfaces.readInteger("Digite o número da matricula");
+		numMatricula = geradorNumeroMatricula();
+		nomeAluno = Interfaces.readString("Digite o nome do aluno: ");		
+		System.out.println("[Nome: " + nomeAluno + ", Matricula: " + numMatricula + "]");
+	}
+	
+	public Aluno(String a) {		
+		numMatricula = geradorNumeroMatricula();
+		nomeAluno = a;		
 	}
 
 	public String getNomeAluno() {
@@ -23,6 +30,18 @@ public class Aluno {
 
 	public void setNumMatricula(int numMatricula) {
 		this.numMatricula = numMatricula;
+	}
+
+	protected static int geradorNumeroMatricula() {
+		Random ran = new Random();
+		int[] simbolos = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };		
+		int tamanhoNum  = 6;
+		int b = 0;
+		for (int i = 0; i < tamanhoNum; i++) {
+			int a = ran.nextInt(simbolos.length);
+			b += simbolos[a];
+		}
+		return b;
 	}
 
 	@Override
