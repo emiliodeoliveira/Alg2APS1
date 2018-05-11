@@ -31,13 +31,5 @@ public class Chamada {
 	
 	public int getPresenca() {
 		return presenca;
-	}
-
-	@Override
-	public String toString() {
-		return "Chamada [dataChamada=" + dataChamada + ", idAluno=" + idAluno + ", idTurma=" + idTurma + ", presenca="
-				+ presenca + "]";
-	}
-	
-	
+	}	
 }

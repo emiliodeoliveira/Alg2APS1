@@ -121,7 +121,8 @@ public class Principal {
 		}
 		return c;
 	}
-
+	
+	// Esse método percorre o array da chamada e verifica o ID do aluno, pegando informação de nome e presença no arraylist das chamadas.
 	private static void mostrarPresenca(String d, int t) {
 		int checaPresenca = 0;
 		System.out.println("Chamada do dia "+d+	"\nDisciplina: "+listaTurma.get(t).getDisciplina()+"\n----------");

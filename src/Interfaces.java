@@ -32,8 +32,7 @@ public class Interfaces {
 
 	public static String getDateTime() { 
 		Date today = Calendar.getInstance().getTime();
-		Format formatter = new SimpleDateFormat("yyyy-MM-dd");
-		
+		Format formatter = new SimpleDateFormat("dd-MM-yyyy");		
 		String s = formatter.format(today);
 		return s;
 	}
