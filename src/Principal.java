@@ -53,7 +53,7 @@ public class Principal {
 		listaAlunos.add(new Aluno("Daniele Silva"));
 		listaAlunos.add(new Aluno("Wilson Martins"));
 	}
-	
+
 	// Insere valores no arraylist das turmas.
 	private static void inicializaTurmas() {
 		listaTurma.add(new Turma("Algoritmos II"));		
@@ -76,19 +76,27 @@ public class Principal {
 	private static void realizarChamada() {
 		String data = Interfaces.getDateTime();
 		int cont = 0;
-		boolean verificaPresenca;
+		int verificaPresenca = 0;
 		listarTurmas();
 		int cTurma = Interfaces.readInteger("Digite o código da turma: ");
+		
 		System.out.print("Chamada da turma de "+listaTurma.get(cTurma).getDisciplina()+" do dia de "+data+":\n");
 		for(Aluno s: listaAlunos){			
-			System.out.print(listaAlunos.get(cont).getNomeAluno());
-			char pres = Interfaces.readString(". Presente? [S/N]").charAt(0);
+			System.out.print(listaAlunos.get(cont).getNomeAluno()+". ");
+			char pres = Interfaces.readChar("Presente? [S/N]: ");
+			pres = Character.toUpperCase(pres);
 			if (pres == 'S') {
-				verificaPresenca = true;
+				verificaPresenca = 0;
 				chamadas.add(new Chamada(data, cont, cTurma, verificaPresenca));
-			}			
-			cont++;
+			} else if (pres == 'N'){
+				verificaPresenca = 1;
+				chamadas.add(new Chamada(data, cont, cTurma, verificaPresenca));
+			} else {
+				System.out.println("Opção inválida!");				
+			}
+			cont++;			
 		}
+		mostrarPresenca(data, cTurma);
 	}
 
 	private static void listarAlunos() {
@@ -112,6 +120,23 @@ public class Principal {
 				c = -1;
 		}
 		return c;
+	}
+
+	private static void mostrarPresenca(String d, int t) {
+		int checaPresenca = 0;
+		System.out.println("Chamada do dia "+d+	"\nDisciplina: "+listaTurma.get(t).getDisciplina()+"\n----------");
+		for(int i=0; i < chamadas.size(); i++){			
+			checaPresenca = chamadas.get(i).getPresenca();			
+			System.out.print(listaAlunos.get(i).getNomeAluno()+": ");
+			switch (checaPresenca) {
+			case 0:			
+				System.out.println("presente");
+				break;
+			case 1:
+				System.out.println("ausente");				
+				break;		
+			}
+		}
 	}
 
 	private static String menu() {

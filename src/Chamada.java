@@ -3,9 +3,9 @@ public class Chamada {
 	private String dataChamada = "";
 	private int idAluno = 0;
 	private int idTurma = 0;
-	private boolean presenca = false;
+	private int presenca = 0;
 	
-	public Chamada(String data, int aluno, int turma, boolean pres) {
+	public Chamada(String data, int aluno, int turma, int pres) {
 		this.dataChamada = data;
 		this.idAluno = aluno;
 		this.idTurma = turma;
@@ -24,11 +24,13 @@ public class Chamada {
 	public void setIdAluno(int idAluno) {
 		this.idAluno = idAluno;
 	}
-	public boolean isPresenca() {
-		return presenca;
-	}
-	public void setPresenca(boolean presenca) {
+
+	public void setPresenca(int presenca) {
 		this.presenca = presenca;
+	}
+	
+	public int getPresenca() {
+		return presenca;
 	}
 
 	@Override

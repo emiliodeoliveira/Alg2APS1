@@ -23,6 +23,12 @@ public class Interfaces {
 		System.out.print(msg);
 		return input.nextInt();
 	}
+	
+	public static char readChar(String msg) {
+		Scanner input = new Scanner(System.in);
+		System.out.print(msg);
+		return input.next().charAt(0);
+	}
 
 	public static String getDateTime() { 
 		Date today = Calendar.getInstance().getTime();
