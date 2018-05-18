@@ -62,9 +62,9 @@ public class SistemaAcademico {
 		int cod = Console.readInteger("Digite a matricula do aluno: ");
 		int codVerificado = verificaCodAluno(cod);
 		if (codVerificado != -1) {
-			n1 = Console.readDouble("Digite a nota da avaliaÃ§Ã£o 1: ");
-			n2 = Console.readDouble("Digite a nota da avaliaÃ§Ã£o 2: ");
-			n3 = Console.readDouble("Digite a nota da avaliaÃ§Ã£o 3: ");
+			n1 = Console.readDouble("Digite a nota da avaliação 1: ");
+			n2 = Console.readDouble("Digite a nota da avaliação 2: ");
+			n3 = Console.readDouble("Digite a nota da avaliação 3: ");
 		} else {
 			System.out.println("Erro");
 		}
@@ -76,7 +76,7 @@ public class SistemaAcademico {
 		int cont = 0;
 		int verificaPresenca;
 		listarTurmas();
-		int cTurma = Console.readInteger("Digite o cÃ³digo da turma: ");
+		int cTurma = Console.readInteger("Digite o código da turma: ");
 
 		System.out.print("Chamada da turma de "+listaTurma.get(cTurma).getDisciplina()+" do dia de "+data+":\n");
 		for(Aluno s: listaAlunos){
@@ -120,7 +120,7 @@ public class SistemaAcademico {
 		return c;
 	}
 
-	// Esse mÃ©todo percorre o array da chamada e verifica o ID do aluno, pegando informaÃ§Ã£o de nome e presen?a no arraylist das chamadas.
+	// Esse método percorre o array da chamada e verifica o ID do aluno, pegando informações de nome e presença no arraylist das chamadas.
 	private static void mostrarPresenca(String d, int t) {
 		int checaPresenca = 0;
 		System.out.println("Chamada do dia "+d+	"\nDisciplina: "+listaTurma.get(t).getDisciplina()+"\n----------");
@@ -140,13 +140,13 @@ public class SistemaAcademico {
 
 	private static String menu() {
 		String menu = "";
-		menu += "\nSistema acadÃªmico:";
+		menu += "\nSistema acadêmico:";
 		menu += "\n  1 - Cadastrar aluno.";
 		menu += "\n  2 - Cadastrar turma.";
 		menu += "\n  3 - Listar alunos.";
 		menu += "\n  4 - Listar turmas.";
 		menu += "\n  5 - Realizar chamada.";
-		menu += "\n  6 - Adicionar avaliaÃ§Ã£o.";
+		menu += "\n  6 - Adicionar avaliação.";
 		menu += "\n  7 - Sair.";
 		menu += "\nEscolha: ";
 		return menu;

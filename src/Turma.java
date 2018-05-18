@@ -22,7 +22,7 @@ public class Turma {
 
 	@Override
 	public String toString() {
-		return "CÃ³digo: " + codTurma + ", Disciplina: " + disciplina +"";
+		return "Código: " + codTurma + ", Disciplina: " + disciplina +"";
 	}
 	
 }
