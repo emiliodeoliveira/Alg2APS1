@@ -5,7 +5,7 @@ public class Turma {
 
 	public Turma() {
 		this.codTurma = codTurma + 1;
-		disciplina = Interfaces.readString("Digite o nome da disciplina: ");		
+		disciplina = Console.readString("Digite o nome da disciplina: ");
 	}
 
 	public Turma(String d) {
@@ -22,7 +22,7 @@ public class Turma {
 
 	@Override
 	public String toString() {
-		return "Código: " + codTurma + ", Disciplina: " + disciplina +"";
+		return "CÃ³digo: " + codTurma + ", Disciplina: " + disciplina +"";
 	}
 	
 }

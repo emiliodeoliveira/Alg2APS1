@@ -7,7 +7,7 @@ public class Aluno {
 
 	public Aluno() {
 		numMatricula = geradorNumeroMatricula();
-		nomeAluno = Interfaces.readString("Digite o nome do aluno: ");		
+		nomeAluno = Console.readString("Digite o nome do aluno: ");
 		System.out.println("[Nome: " + nomeAluno + ", Matricula: " + numMatricula + "]");
 	}
 	
@@ -32,7 +32,7 @@ public class Aluno {
 		this.numMatricula = numMatricula;
 	}
 
-	// Este método gera um código aleatório de matricula
+	// Este mÃ©otod gera um cÃ³digo aleatÃ³rio de matricula
 	public static int geradorNumeroMatricula() {
 		Random ran = new Random();
 		int[] simbolos = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };		

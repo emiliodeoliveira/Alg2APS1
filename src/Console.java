@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Scanner;
 
-public class Interfaces {
+public class Console {
 
 	public static String readString(String msg) {
 		Scanner input = new Scanner(System.in);

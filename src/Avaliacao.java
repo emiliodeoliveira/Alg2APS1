@@ -4,9 +4,9 @@ public class Avaliacao {
 	private double nota1; double nota2; double nota3;
 
 	public Avaliacao() {
-		nota1 = Interfaces.readDouble("Digite a nota da avaliação 1: ");
-		nota2 = Interfaces.readDouble("Digite a nota da avaliação 2: ");
-		nota3 = Interfaces.readDouble("Digite a nota da avaliação 3: ");		
+		nota1 = Console.readDouble("Digite a nota da avaliaÃ§Ã£o 1: ");
+		nota2 = Console.readDouble("Digite a nota da avaliaÃ§Ã£o 2: ");
+		nota3 = Console.readDouble("Digite a nota da avaliaÃ§Ã£o 3: ");
 	}
 
 	public Avaliacao(int cod, double n1, double n2, double n3) {
